@@ -12,12 +12,12 @@ actor DBank {
 
   let id = 2622211906; 
 
-  public func topUp(amount : Float) {
+  public func topUp(amount : Float) : async (){
     currentValue += amount;
     Debug.print(debug_show (currentValue));
   };
 
-  public func withdraw(amount : Float) {
+  public func withdraw(amount : Float) : async (){
     let temp : Float = currentValue - amount;
     if (temp >= 0) {
       currentValue -= amount;
@@ -31,7 +31,7 @@ actor DBank {
     return currentValue;
   };
 
-  public func compund(){
+  public func compund(): async (){
     //calculating the nono seconds elapsed to compute the interest
     let currentTime = Time.now();
     let timeElapsedNS = currentTime - startTime;
